@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "css-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^2.2.0",
     "style-loader": "^3.2.1",
     "uglifyjs-webpack-plugin": "^2.2.0"
   },
