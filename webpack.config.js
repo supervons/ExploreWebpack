@@ -1,5 +1,5 @@
 const path = require('path');
-
+// 压缩选项
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
   // JavaScript 执行入口文件
