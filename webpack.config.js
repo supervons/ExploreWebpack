@@ -24,8 +24,8 @@ module.exports = {
       {
         // 用正则去匹配要用该 loader 转换的 CSS 文件
         test: /\.css$/,
-        // use: [MiniCssExtractPlugin.loader,'css-loader']
-        use: ['style-loader','css-loader']
+        // use: [MiniCssExtractPlugin.loader,'css-loader'] // 抽离 CSS
+        use: ['style-loader','css-loader'] // 合并 CSS 进 bundle.js 中
       }
     ]
   }
