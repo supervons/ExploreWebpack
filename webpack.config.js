@@ -1,16 +1,24 @@
 const path = require('path');
+const port = process.env.port || process.env.npm_config_port || 8081 // dev port
 // 压缩选项
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 // 插件
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   // JavaScript 执行入口文件
-  entry: './main.js',
+  entry: {
+    app:'./main.js'
+  },
   output: {
     // 把所有依赖的模块合并输出到一个 bundle.js 文件
     filename: 'bundle.js',
     // 输出文件都放到 dist 目录下
     path: path.resolve(__dirname, './dist'),
+  },
+  devServer: {
+    host: 'localhost',
+    port: port,
+    open: false
   },
   plugins: [new MiniCssExtractPlugin({
     // 文件名称随机
@@ -25,7 +33,7 @@ module.exports = {
         // 用正则去匹配要用该 loader 转换的 CSS 文件
         test: /\.css$/,
         // use: [MiniCssExtractPlugin.loader,'css-loader'] // 抽离 CSS
-        use: ['style-loader','css-loader'] // 合并 CSS 进 bundle.js 中
+        use: ['style-loader','css-loader'] // 合并 CSS 进 bundle.js
       }
     ]
   }
