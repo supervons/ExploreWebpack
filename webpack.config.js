@@ -5,13 +5,14 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 // 插件
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
-  // JavaScript 执行入口文件
+  // JavaScript 执行入口文件，可以配置多个
   entry: {
-    app:'./main.js'
+    app:'./main.js',
+    bbb:"./main2.js"
   },
   output: {
     // 把所有依赖的模块合并输出到一个 bundle.js 文件
-    filename: 'bundle.js',
+    filename: '[name]_bundle.js',
     // 输出文件都放到 dist 目录下
     path: path.resolve(__dirname, './dist'),
   },
