@@ -40,6 +40,12 @@ module.exports = {
         // 对非文本文件采用 file-loader 加载
         test: /\.(gif|png|jpe?g|eot|woff|ttf|svg|pdf)$/,
         use: ['file-loader'],
+        include:[
+          path.resolve(__dirname, 'assets'),
+        ],
+        exclude:[
+          // path.resolve(__dirname, 'assets'),// 如果排除则打包失败
+        ]
       }
     ]
   }
