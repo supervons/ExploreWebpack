@@ -28,7 +28,13 @@ module.exports = {
   devServer: {
     host: 'localhost',
     port: port,
-    open: false
+    headers: { // 增加一些调试时的请求头，方便调试
+      'X-foo':'bar'
+    },
+    open: false,
+    hot: true,
+    // https: true // 使用 https 服务
+    // inline: false // 如果关闭 inline 则使用 iframe 预览，需要手动刷新
   },
   plugins: [new MiniCssExtractPlugin({
     // 文件名称随机
