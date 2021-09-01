@@ -14,7 +14,7 @@ module.exports = {
     // 把所有依赖的模块合并输出到一个 bundle.js 文件
     filename: '[name]_bundle.js',
     // 输出文件都放到 dist 目录下
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, './dist')
   },
   devServer: {
     host: 'localhost',
@@ -29,12 +29,17 @@ module.exports = {
     minimizer: [new UglifyJsPlugin()],
   },
   module: {
-    rules: [
+    rules: [ // 配置各类文件处理规则，
       {
         // 用正则去匹配要用该 loader 转换的 CSS 文件
         test: /\.css$/,
         // use: [MiniCssExtractPlugin.loader,'css-loader'] // 抽离 CSS
-        use: ['style-loader','css-loader'] // 合并 CSS 进 bundle.js
+        use: ['style-loader','css-loader'] // 处理顺序为从后到前，合并 CSS 进 bundle.js
+      },
+      {
+        // 对非文本文件采用 file-loader 加载
+        test: /\.(gif|png|jpe?g|eot|woff|ttf|svg|pdf)$/,
+        use: ['file-loader'],
       }
     ]
   }
