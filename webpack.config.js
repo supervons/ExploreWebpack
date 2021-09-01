@@ -10,6 +10,15 @@ module.exports = {
     app:'./main.js',
     bbb:"./main2.js"
   },
+  resolve:{
+    alias:{ // ./assets 被映射成 images，$ 为以 images 结尾
+      'images': './assets/'
+      // 'images$': './assets/question.png''
+    },
+    extensions: ['.js', '.json'], // 配置在尝试过程中用到的后缀列表
+    // 设置引入文件夹，默认只有 node_modules，设置后可以直接引入，如 require('question.png');
+    modules:['./assets/','node_modules'] 
+  },
   output: {
     // 把所有依赖的模块合并输出到一个 bundle.js 文件
     filename: '[name]_bundle.js',
