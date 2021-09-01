@@ -64,6 +64,10 @@ module.exports = {
       }
     ]
   },
+  // externals:{ // 忽略第三方包，比如使用 CDN 的方式去进行加载
+  //   // 把导入语句里的 jquery 替换成运行环境里的全局变量 jQuery
+  //   jquery: 'jQuery'
+  // },
   // watch: true,
   // // 监听模式运行时的参数
   // // 在开启监听模式时，才有意义
