@@ -1,5 +1,5 @@
 // main2
-require('./main.css');
+require('./main.scss');
 // ./assets 被映射成 images 
 require('images/question.png');
 import a from 'question.png' // 能直接引入是因为 webpack 配置了 modules

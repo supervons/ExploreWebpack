@@ -1,5 +1,5 @@
 const path = require('path');
-const port = process.env.port || process.env.npm_config_port || 8081 // dev port
+const port = process.env.port || process.env.npm_config_port || 8088 // dev port
 // 压缩选项
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 // 插件
@@ -38,7 +38,7 @@ module.exports = {
   },
   plugins: [new MiniCssExtractPlugin({
     // 文件名称随机
-    filename: `[name]_[contenthash:8].css`,
+    filename: `[name]_css.css`,
   })],
   optimization: {
     minimizer: [new UglifyJsPlugin()],
@@ -61,7 +61,13 @@ module.exports = {
         exclude:[
           // path.resolve(__dirname, 'assets'),// 如果排除则打包失败
         ]
-      }
+      },
+      {
+        // 增加对 SCSS 文件的支持
+        test: /\.scss$/,
+        // SCSS 文件的处理顺序为先 sass-loader 再 css-loader 再 style-loader
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+      },
     ]
   },
   // externals:{ // 忽略第三方包，比如使用 CDN 的方式去进行加载
