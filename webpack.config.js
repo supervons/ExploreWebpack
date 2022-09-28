@@ -5,11 +5,9 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 // 插件
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
+  mode: 'production',
   // JavaScript 执行入口文件，可以配置多个
-  entry: {
-    app:'./main.js',
-    bbb:"./main2.js"
-  },
+  entry:['./main.js','./main2.js'],
   resolve:{
     alias:{ // ./assets 被映射成 images，$ 为以 images 结尾
       'images': './assets/'
@@ -17,11 +15,11 @@ module.exports = {
     },
     extensions: ['.js', '.json'], // 配置在尝试过程中用到的后缀列表
     // 设置引入文件夹，默认只有 node_modules，设置后可以直接引入，如 require('question.png');
-    modules:['./assets/','node_modules'] 
+    modules:['./assets/','node_modules']
   },
   output: {
     // 把所有依赖的模块合并输出到一个 bundle.js 文件
-    filename: '[name]_bundle.js',
+    filename: 'bundle.js',
     // 输出文件都放到 dist 目录下
     path: path.resolve(__dirname, './dist')
   },
@@ -82,7 +80,7 @@ module.exports = {
   //   // 默认为空
   //   ignored: /node_modules/,
   //   // 监听到变化发生后会等300ms再去执行动作，防止文件更新太快导致重新编译频率太高
-  //   // 默认为 300ms  
+  //   // 默认为 300ms
   //   aggregateTimeout: 3000,
   //   // 判断文件是否发生变化是通过不停的去询问系统指定文件有没有变化实现的
   //   // 默认每隔1000毫秒询问一次
