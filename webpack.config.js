@@ -45,6 +45,10 @@ module.exports = {
   module: {
     rules: [ // 配置各类文件处理规则，
       {
+        test:/\.js$/,
+        use: "./tools/customer-loader.js",   // 看这里，看这里
+      },
+      {
         test: /\.png$/,
         type: 'asset/resource'
       },
