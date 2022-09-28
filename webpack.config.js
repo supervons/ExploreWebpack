@@ -4,6 +4,7 @@ const port = process.env.port || process.env.npm_config_port || 8088 // dev port
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 // 插件
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: 'production',
   // JavaScript 执行入口文件，可以配置多个
@@ -38,7 +39,7 @@ module.exports = {
   plugins: [new MiniCssExtractPlugin({
     // 文件名称随机
     filename: `[name]_css.css`,
-  })],
+  }), new HtmlWebpackPlugin()],
   optimization: {
     minimizer: [new UglifyJsPlugin()],
   },
