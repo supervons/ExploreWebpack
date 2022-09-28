@@ -45,22 +45,26 @@ module.exports = {
   module: {
     rules: [ // 配置各类文件处理规则，
       {
+        test: /\.png$/,
+        type: 'asset/resource'
+      },
+      {
         // 用正则去匹配要用该 loader 转换的 CSS 文件
         test: /\.css$/,
         // use: [MiniCssExtractPlugin.loader,'css-loader'] // 抽离 CSS
         use: ['style-loader','css-loader'] // 处理顺序为从后到前，合并 CSS 进 bundle.js
       },
-      {
-        // 对非文本文件采用 file-loader 加载
-        test: /\.(gif|png|jpe?g|eot|woff|ttf|svg|pdf)$/,
-        use: ['file-loader'],
-        include:[
-          path.resolve(__dirname, 'assets'),
-        ],
-        exclude:[
-          // path.resolve(__dirname, 'assets'),// 如果排除则打包失败
-        ]
-      },
+      // {
+      //   // 对非文本文件采用 file-loader 加载
+      //   test: /\.(gif|png|jpe?g|eot|woff|ttf|svg|pdf)$/,
+      //   use: ['file-loader'],
+      //   include:[
+      //     path.resolve(__dirname, 'assets'),
+      //   ],
+      //   exclude:[
+      //     // path.resolve(__dirname, 'assets'),// 如果排除则打包失败
+      //   ]
+      // },
       {
         // 增加对 SCSS 文件的支持
         test: /\.scss$/,
