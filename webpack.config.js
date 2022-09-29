@@ -46,6 +46,10 @@ module.exports = {
   module: {
     rules: [ // 配置各类文件处理规则，
       {
+        test:/\.vons$/,
+        use: ["./tools/vons-loader.js"],
+      },
+      {
         test:/\.js$/,
         use: ["./tools/customer-loader2.js", "./tools/customer-loader.js"],   // 看这里，看这里
       },
