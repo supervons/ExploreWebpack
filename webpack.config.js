@@ -5,6 +5,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 // 插件
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ConsoleLogOnBuildWebpackPlugin = require('./tools/ConsoleLogOnBuildWebpackPlugin');
+
 module.exports = {
   // mode: 'production',// 开启后调试较慢
   // JavaScript 执行入口文件，可以配置多个
@@ -39,7 +41,7 @@ module.exports = {
   plugins: [new MiniCssExtractPlugin({
     // 文件名称随机
     filename: `[name]_css.css`,
-  }), new HtmlWebpackPlugin({template: "./index.html"})],
+  }), new HtmlWebpackPlugin({template: "./index.html"}), new ConsoleLogOnBuildWebpackPlugin()],
   optimization: {
     minimizer: [new UglifyJsPlugin()],
   },
