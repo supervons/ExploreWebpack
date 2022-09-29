@@ -21,7 +21,7 @@ module.exports = {
   output: {
     clean: true, // 在生成文件之前清空 output 目录
     // 把所有依赖的模块合并输出到一个 bundle.js 文件
-    filename: 'bundle.js',
+    filename: '[id]_bundle.js',
     // 输出文件都放到 dist 目录下
     path: path.resolve(__dirname, './dist')
   },
@@ -39,7 +39,7 @@ module.exports = {
   plugins: [new MiniCssExtractPlugin({
     // 文件名称随机
     filename: `[name]_css.css`,
-  }), new HtmlWebpackPlugin()],
+  }), new HtmlWebpackPlugin({template: "./index.html"})],
   optimization: {
     minimizer: [new UglifyJsPlugin()],
   },
