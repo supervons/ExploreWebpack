@@ -7,3 +7,4 @@ import a from 'question.png' // 能直接引入是因为 webpack 配置了 modul
 const show = require('./show');
 // 执行 show 函数
 show('Webpack');
+import template from './customer-type/test.vons'

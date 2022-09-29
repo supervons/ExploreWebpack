@@ -1,10 +1,14 @@
-<vons-tmp>
-  <div>
-    hello,supervons
-  </div>
-</vons-tmp>
-<script>
-  function begin(){
-    alert('1')
-  }
-</script>
+<vons>
+  <tmp>
+    <div>
+      hello,supervons
+    </div>
+  </tmp>
+  <script>
+    export default {
+      created(){
+      alert(1)
+      }
+    }
+  </script>
+</vons>

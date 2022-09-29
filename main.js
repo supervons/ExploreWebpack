@@ -4,5 +4,3 @@ require('./main.scss');
 const show = require('./show.js');
 // 执行 show 函数
 show('Webpack');
-
-import './customer-type/test.vons'
