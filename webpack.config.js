@@ -6,7 +6,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
-  mode: 'production',
+  // mode: 'production',// 开启后调试较慢
   // JavaScript 执行入口文件，可以配置多个
   entry:['./main.js','./main2.js'],
   resolve:{
@@ -47,7 +47,7 @@ module.exports = {
     rules: [ // 配置各类文件处理规则，
       {
         test:/\.js$/,
-        use: "./tools/customer-loader.js",   // 看这里，看这里
+        use: ["./tools/customer-loader2.js", "./tools/customer-loader.js"],   // 看这里，看这里
       },
       {
         test: /\.png$/,
