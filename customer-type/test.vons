@@ -1,1 +1,10 @@
-hello,supervons
+<vons-tmp>
+  <div>
+    hello,supervons
+  </div>
+</vons-tmp>
+<script>
+  function begin(){
+    alert('1')
+  }
+</script>
