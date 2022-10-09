@@ -1,5 +1,6 @@
 const path = require('path');
 const port = process.env.port || process.env.npm_config_port || 8088 // dev port
+const webpack = require('webpack'); // 访问内置的插件
 // 压缩选项
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 // 插件
@@ -38,10 +39,15 @@ module.exports = {
     // https: true // 使用 https 服务
     // inline: false // 如果关闭 inline 则使用 iframe 预览，需要手动刷新
   },
-  plugins: [new MiniCssExtractPlugin({
+  plugins: [
+    new MiniCssExtractPlugin({
     // 文件名称随机
     filename: `[name]_css.css`,
-  }), new HtmlWebpackPlugin({template: "./index.html"}), new ConsoleLogOnBuildWebpackPlugin()],
+    }),
+    new HtmlWebpackPlugin({template: "./index.html"}),
+    new ConsoleLogOnBuildWebpackPlugin(),
+    new webpack.ProgressPlugin() // 显示编译进度
+  ],
   optimization: {
     minimizer: [new UglifyJsPlugin()],
   },
