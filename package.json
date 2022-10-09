@@ -22,6 +22,7 @@
   "scripts": {
     "dev": "webpack-dev-server --open",
     "build": "webpack --config webpack.config.js",
+    "node-build": "node node-run-script.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
