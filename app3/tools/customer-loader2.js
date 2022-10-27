@@ -1,4 +1,4 @@
 module.exports = function (source) {
     console.log(source);
-    return  source.replace("World","My JS World")
+    return  source.replace("Nihao!World!!！","My JS World")
 }

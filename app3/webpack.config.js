@@ -7,9 +7,13 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ConsoleLogOnBuildWebpackPlugin = require('./tools/ConsoleLogOnBuildWebpackPlugin');
+// 模块联邦所需
+const {ModuleFederationPlugin} = require("webpack").container;
+const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
+
 
 module.exports = {
-  // mode: 'production',// 开启后调试较慢
+  mode: 'development',// 开启后调试较慢
   // JavaScript 执行入口文件，可以配置多个
   entry:['./main.js','./main2.js'],
   resolve:{
@@ -36,6 +40,7 @@ module.exports = {
     },
     open: false,
     hot: true,
+    watchFiles: '*',
     // https: true // 使用 https 服务
     // inline: false // 如果关闭 inline 则使用 iframe 预览，需要手动刷新
   },
@@ -46,6 +51,16 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({template: "./index.html"}),
     new ConsoleLogOnBuildWebpackPlugin(),
+    new ModuleFederationPlugin({
+      name: "app3",
+      filename: 'remoteEntry.js', // 入口页
+      exposes: { // 暴露模块
+        './main': './main.js',
+        './main2': './main2.js',
+      },
+      shared: {},
+    }),
+    new ExternalTemplateRemotesPlugin(),
     new webpack.ProgressPlugin() // 显示编译进度
   ],
   optimization: {
