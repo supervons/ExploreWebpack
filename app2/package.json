@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack serve",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "bootstrap": "npm install"
   },
   "dependencies": {
     "react": "^17.0.2",
