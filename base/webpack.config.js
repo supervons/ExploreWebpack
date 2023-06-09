@@ -9,7 +9,7 @@ module.exports = {
     devServer: {
         port: 8001,
         proxy:{
-            "/api":"http://39.105.24.114:8088"
+            "/api":"http://xxx:8088"
         }
     },
     module: {

@@ -3,7 +3,7 @@ import {getProfile} from 'base/utils'
 export default function app4(){
     useEffect(()=>{
         getProfile().then(res=>{
-            alert(JSON.stringify(res))
+            alert('React call:' + JSON.stringify(res))
         })
     }, [])
     return <div>

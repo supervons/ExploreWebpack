@@ -5,11 +5,13 @@
 </template>
 
 <script>
-
+import {getProfile} from 'base/utils'
 export default {
     name: 'App',
     mounted() {
-        alert('hello, vue')
+        getProfile().then(res=>{
+            alert('Vue call:' + JSON.stringify(res))
+        })
     }
 }
 </script>

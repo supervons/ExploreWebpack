@@ -4,7 +4,7 @@ const { ModuleFederationPlugin } = require('webpack').container;
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/main.js',
     mode: 'development',
     devServer: {
         port: 8003
@@ -23,6 +23,9 @@ module.exports = {
             filename: 'remoteEntry.js',
             exposes: {
                 './vue-home': './src/app.vue'
+            },
+            remotes: {
+                base: "base@http://localhost:8001/remoteEntry.js",
             },
         }),
         new ExternalTemplateRemotesPlugin(),
