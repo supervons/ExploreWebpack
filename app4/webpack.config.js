@@ -3,13 +3,10 @@ const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");// ËøêË
 const { ModuleFederationPlugin } = require('webpack').container;
 
 module.exports = {
-    entry: './src/main.js',
+    entry: './src/index.js',
     mode: 'development',
     devServer: {
-        port: 8001,
-        proxy:{
-            "/api":"http://39.105.24.114:8088"
-        }
+        port: 8002
     },
     module: {
         rules: [
@@ -25,13 +22,13 @@ module.exports = {
     },
     plugins: [
         new ModuleFederationPlugin({
-            name: 'base',
+            name: 'app4',
             filename: 'remoteEntry.js',
             exposes: {
-                './utils': './src/utils.js'
+                './home': './src/app4.js'
             },
             remotes: {
-                app4: "app4@http://localhost:8002/remoteEntry.js",
+                base: "base@http://localhost:8001/remoteEntry.js",
             },
             shared: { 'react': { singleton: true }, 'react-dom': { singleton: true } },
         }),
