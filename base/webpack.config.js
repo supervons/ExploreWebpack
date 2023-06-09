@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");// 运行时加载远程应用
 const { ModuleFederationPlugin } = require('webpack').container;
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
     entry: './src/main.js',
@@ -21,6 +22,10 @@ module.exports = {
                     presets: ["@babel/preset-react"],
                 },
             },
+            {
+                test: /\.vue$/,
+                use: 'vue-loader',
+            },
         ],
     },
     plugins: [
@@ -32,10 +37,12 @@ module.exports = {
             },
             remotes: {
                 app4: "app4@http://localhost:8002/remoteEntry.js",
+                vue1: "vue1@http://localhost:8003/remoteEntry.js",
             },
             shared: { 'react': { singleton: true }, 'react-dom': { singleton: true } },
         }),
         new ExternalTemplateRemotesPlugin(),
         new HtmlWebpackPlugin({template: "./index.html"}),
+        new VueLoaderPlugin()
     ],
 };

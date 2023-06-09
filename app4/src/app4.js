@@ -7,6 +7,6 @@ export default function app4(){
         })
     }, [])
     return <div>
-        hello, app4
+        hello, react-mfp
     </div>
 }

@@ -6,31 +6,22 @@ module.exports = {
     entry: './src/main.js',
     mode: 'development',
     devServer: {
-        port: 8002
-    },
-    module: {
-        rules: [
-            {
-                test: /\.jsx?$/,
-                loader: "babel-loader",
-                exclude: /node_modules/,
-                options: {
-                    presets: ["@babel/preset-react"],
-                },
-            },
-        ],
+        port: 8001,
+        proxy:{
+            "/api":"http://39.105.24.114:8088"
+        }
     },
     plugins: [
         new ModuleFederationPlugin({
-            name: 'app4',
+            name: 'base',
             filename: 'remoteEntry.js',
             exposes: {
-                './home': './src/app4.js'
+                './utils': './src/utils.js'
             },
             remotes: {
-                base: "base@http://localhost:8001/remoteEntry.js",
+                app4: "app4@http://localhost:8002/remoteEntry.js",
+                vue1: "vue1@http://localhost:8003/remoteEntry.js",
             },
-            shared: { 'react': { singleton: true }, 'react-dom': { singleton: true } },
         }),
         new ExternalTemplateRemotesPlugin(),
         new HtmlWebpackPlugin({template: "./index.html"}),
