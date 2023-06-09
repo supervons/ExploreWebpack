@@ -19,8 +19,11 @@ module.exports = {
     },
     plugins: [
         new ModuleFederationPlugin({
-            name: 'vue',
+            name: 'vue1',
             filename: 'remoteEntry.js',
+            exposes: {
+                './vue-home': './src/app.vue'
+            },
         }),
         new ExternalTemplateRemotesPlugin(),
         new HtmlWebpackPlugin({template: "./index.html"}),
