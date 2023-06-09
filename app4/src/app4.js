@@ -5,7 +5,7 @@ export default function app4(){
         getProfile().then(res=>{
             alert(JSON.stringify(res))
         })
-    })
+    }, [])
     return <div>
         hello, app4
     </div>
