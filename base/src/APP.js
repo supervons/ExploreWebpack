@@ -1,6 +1,7 @@
 import React, { Suspense, useEffect } from "react";
 import Vue from "vue/dist/vue.min.js"; // 引入完整版，否则不能解析vue的组件对象语法
 import vue2 from "vue1/vue-home";
+import { toCamelCase } from "./utils";
 const RemoteApp = React.lazy(() => import("app4/home"));
 
 export default function APP() {
@@ -12,6 +13,7 @@ export default function APP() {
   return (
     <div>
       hello, 123
+      {toCamelCase("Heelo world")}
       <div id="vueApp" />
       <Suspense fallback={"loading..."}>
         <RemoteApp />

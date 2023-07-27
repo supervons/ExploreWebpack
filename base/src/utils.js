@@ -1,3 +1,4 @@
+import _ from "lodash";
 export function getProfile() {
   return new Promise((resolve, reject) => {
     fetch("/api/v1/profile/test")
@@ -11,4 +12,8 @@ export function getProfile() {
         reject(err);
       });
   });
+}
+
+export function toCamelCase(str) {
+  return _.camelCase(str);
 }
