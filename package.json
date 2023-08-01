@@ -5,7 +5,7 @@
     "packages": [
       "base",
       "app4",
-      "vue1"
+      "vue"
     ]
   },
   "scripts": {
