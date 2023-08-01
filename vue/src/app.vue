@@ -1,20 +1,17 @@
 <template>
-    <div >
-      hello, vue
-    </div>
+  <div id="vueApp">hello, vue</div>
 </template>
 
 <script>
-import {getProfile} from 'base/utils'
+import { getProfile } from "base/utils";
 export default {
-    name: 'App',
-    mounted() {
-        getProfile().then(res=>{
-            alert('Vue call:' + JSON.stringify(res))
-        })
-    }
-}
+  name: "App",
+  mounted() {
+    getProfile().then((res) => {
+      alert("Vue call:" + JSON.stringify(res));
+    });
+  },
+};
 </script>
 
-<style>
-</style>
+<style></style>
