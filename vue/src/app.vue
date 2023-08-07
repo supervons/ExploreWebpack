@@ -1,10 +1,19 @@
 <template>
   <div id="vueApp">
-    <el-table :data="tableData" style="width: 100%">
-      <el-table-column prop="date" label="日期" width="180"> </el-table-column>
-      <el-table-column prop="name" label="姓名" width="180"> </el-table-column>
-      <el-table-column prop="address" label="地址"> </el-table-column>
-    </el-table>
+    <div class="jumbotron">
+      <img
+        style="height: 500px"
+        src="./assets/images/theme-index-blue.c38b733.png"
+      />
+    </div>
+    <div class="jumbotron-red" :style="{ height: this.scroll + 'px' }">
+      <img
+        style="height: 500px"
+        src="./assets/images/theme-index-red.c8e136e.png"
+      />
+    </div>
+    <div style="margin-top: 720px"></div>
+    <p v-for="item in 20" :key="item">测试文字{{ item }}</p>
   </div>
 </template>
 
@@ -14,6 +23,7 @@ export default {
   name: "App",
   data() {
     return {
+      scroll: 0,
       tableData: [
         {
           date: "2016-05-02",
@@ -39,11 +49,14 @@ export default {
     };
   },
   mounted() {
-    // getProfile().then((res) => {
-    //   alert("Vue call:" + JSON.stringify(res));
-    // });
+    window.addEventListener("scroll", this.handleScroll);
   },
   methods: {
+    handleScroll() {
+      //或者使用document.querySelector('.class或者#id').scrollTop
+      this.scroll =
+        document.documentElement.scrollTop || document.body.scrollTop;
+    },
     tableRowClassName({ row, rowIndex }) {
       if (rowIndex === 1) {
         return "warning-row";
@@ -56,4 +69,17 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.jumbotron {
+  position: absolute;
+  left: 250px;
+  top: 220px;
+}
+.jumbotron-red {
+  transition: height 0.1s;
+  position: absolute;
+  left: 250px;
+  top: 220px;
+  overflow: hidden;
+}
+</style>

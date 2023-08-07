@@ -28,6 +28,10 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /.(jpe?g|png|gif|svg)$/,
+        type: "asset/resource",
+      },
     ],
   },
   plugins: [
