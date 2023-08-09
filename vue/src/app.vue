@@ -14,6 +14,37 @@
     </div>
     <div style="margin-top: 720px"></div>
     <p v-for="item in 20" :key="item">测试文字{{ item }}</p>
+    <div>
+      <img style="height: 500px" src="./assets/images/0.png" />
+      <img
+        class="react-style"
+        :style="{
+          opacity: (this.scroll - 1000) / 100,
+          marginLeft:
+            -280 - (this.scroll > 1300 ? 100 : this.scroll - 1200) + 'px',
+        }"
+        src="./assets/images/1.png"
+      />
+      <img
+        class="react-style"
+        :style="{
+          opacity: (this.scroll - 1200) / 100,
+          marginLeft:
+            -280 - (this.scroll > 1400 ? 100 : this.scroll - 1300) + 'px',
+        }"
+        src="./assets/images/2.png"
+      />
+      <img
+        class="react-style"
+        :style="{
+          opacity: (this.scroll - 1300) / 100,
+          marginLeft:
+            -280 - (this.scroll > 1500 ? 100 : this.scroll - 1400) + 'px',
+        }"
+        src="./assets/images/3.png"
+      />
+    </div>
+    <p v-for="item in 20" :key="item">测试文字{{ item }}</p>
   </div>
 </template>
 
@@ -81,5 +112,8 @@ export default {
   left: 250px;
   top: 220px;
   overflow: hidden;
+}
+.react-style {
+  height: 500px;
 }
 </style>
