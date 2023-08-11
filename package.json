@@ -15,5 +15,12 @@
   },
   "devDependencies": {
     "lerna": "^4.0.0"
+  },
+  "prettier": {
+    "bracketSpacing": true,
+    "jsxBracketSameLine": true,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "arrowParens": "avoid"
   }
 }
