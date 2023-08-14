@@ -1,5 +1,5 @@
 ### 目的
-本仓库为学习`Webpack`时，编写的一些`Demo`.
+`Webpack` Common project.
 
 ### 通常你可用如下经验去判断如何配置 Webpack：
 
@@ -8,6 +8,9 @@
 - [x] 模块联邦Demo
 - [x] 加载 VueJS
 - [x] Vue 加载elementUI表格组件
+- [x] 常见动画 - element & react.
 
 # TODO-LIST
 - [ ] 加载 angularJS
+- [ ] 跨多个版本集成
+- [ ] 综合启停优化
