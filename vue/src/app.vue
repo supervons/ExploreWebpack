@@ -49,38 +49,73 @@
 </template>
 
 <script>
-import { getProfile } from "base/utils";
+import { getProfile } from 'base/utils';
 export default {
-  name: "App",
+  name: 'App',
   data() {
     return {
       scroll: 0,
       tableData: [
         {
-          date: "2016-05-02",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
+          date: '2016-05-02',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄',
         },
         {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
+          date: '2016-05-04',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄',
         },
         {
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
+          date: '2016-05-01',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄',
         },
         {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
+          date: '2016-05-03',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄',
         },
       ],
     };
   },
   mounted() {
-    window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener('scroll', this.handleScroll);
+    if (true) {
+      const videoDom = document.createElement('video');
+      videoDom.setAttribute('muted', '');
+      videoDom.setAttribute('loop', '');
+      videoDom.setAttribute(
+        'src',
+        'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
+      );
+      videoDom.setAttribute('autoplay', '');
+      videoDom.setAttribute('top', '0');
+      videoDom.setAttribute('width', '0.01');
+      videoDom.setAttribute('height', '0.01');
+    }
+    setInterval(function () {
+      const myDate = new Date();
+      const currentDate =
+        myDate.getMinutes() +
+        '分' +
+        myDate.getSeconds() +
+        '秒' +
+        myDate.getMilliseconds() +
+        '豪秒'; // 每次循环打印当前时间
+      console.log(currentDate);
+    }, 500);
+
+    // for (let i = 0; i < 100; i++) {
+    //   setTimeout(() => {
+    //     fetch('/api/v1/profile/test')
+    //       .then(res => {
+    //         return res.json();
+    //       })
+    //       .then(res => {})
+    //       .catch(err => {});
+    //   }, 100);
+    // }
   },
   methods: {
     handleScroll() {
@@ -90,11 +125,11 @@ export default {
     },
     tableRowClassName({ row, rowIndex }) {
       if (rowIndex === 1) {
-        return "warning-row";
+        return 'warning-row';
       } else if (rowIndex === 3) {
-        return "success-row";
+        return 'success-row';
       }
-      return "";
+      return '';
     },
   },
 };
