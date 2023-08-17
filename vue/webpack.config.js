@@ -10,6 +10,9 @@ module.exports = {
   devServer: {
     port: 8003,
   },
+  output: {
+    assetModuleFilename: 'images/[hash][ext][query]',
+  },
   module: {
     rules: [
       {
