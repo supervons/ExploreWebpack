@@ -9,6 +9,7 @@ module.exports = {
   mode: 'development',
   devServer: {
     port: 8003,
+    hot: true,
   },
   output: {
     assetModuleFilename: 'images/[hash][ext][query]',
