@@ -1,40 +1,40 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ExternalTemplateRemotesPlugin = require("external-remotes-plugin"); // 运行时加载远程应用
-const { ModuleFederationPlugin } = require("webpack").container;
-const VueLoaderPlugin = require("vue-loader/lib/plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExternalTemplateRemotesPlugin = require('external-remotes-plugin'); // 运行时加载远程应用
+const { ModuleFederationPlugin } = require('webpack').container;
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
-  entry: "./src/main.js",
-  mode: "development",
+  entry: './src/main.js',
+  mode: 'development',
   devServer: {
     port: 8001,
     proxy: {
-      "/api": "http://xxx:8088",
+      '/api': 'http://39.105.24.114:8088',
     },
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
-          presets: ["@babel/preset-react"],
+          presets: ['@babel/preset-react'],
         },
       },
       {
         test: /\.vue$/,
-        use: "vue-loader",
+        use: 'vue-loader',
       },
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(ttf|eot|woff|woff2)$/,
         use: [
           {
-            loader: "url-loader",
+            loader: 'url-loader',
           },
         ],
       },
@@ -42,19 +42,19 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "base",
-      filename: "remoteEntry.js",
+      name: 'base',
+      filename: 'remoteEntry.js',
       exposes: {
-        "./utils": "./src/utils.js",
+        './utils': './src/utils.js',
       },
       remotes: {
-        app4: "app4@http://localhost:8002/remoteEntry.js",
-        vue1: "vue1@http://localhost:8003/remoteEntry.js",
+        app4: 'app4@http://localhost:8002/remoteEntry.js',
+        vue1: 'vue1@http://localhost:8003/remoteEntry.js',
       },
-      shared: { react: { singleton: true }, "react-dom": { singleton: true } },
+      shared: { react: { singleton: true }, 'react-dom': { singleton: true } },
     }),
     new ExternalTemplateRemotesPlugin(),
-    new HtmlWebpackPlugin({ template: "./index.html" }),
+    new HtmlWebpackPlugin({ template: './index.html' }),
     new VueLoaderPlugin(),
   ],
 };
