@@ -11,6 +11,10 @@ module.exports = {
     port: 8003,
     hot: true,
   },
+  cache: {
+    // 1. 将缓存类型设置为文件系统
+    type: 'filesystem', // 默认是memory
+  },
   output: {
     assetModuleFilename: 'images/[hash][ext][query]',
   },
