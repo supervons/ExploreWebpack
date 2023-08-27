@@ -7,7 +7,11 @@
   <body></body>
   <script>
     console.log(location.href); // "https://example.com/"
-    const worker = new Worker(location.href + 'emptyWorker.js');
+    const worker = new Worker('./emptyWorker.js');
+    worker.postMessage('Hello World');
     console.log(worker); // Worker {}
+    worker.onmessage = function (event) {
+      console.log('Recevied message ' + event.data);
+    };
   </script>
 </html>
