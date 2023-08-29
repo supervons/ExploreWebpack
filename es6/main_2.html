@@ -7,7 +7,7 @@
   <body></body>
   <script>
     const channel = new BroadcastChannel('worker_channel');
-    const worker = new Worker('./emptyWorker2.js');
+    const worker = new Worker('./emptyWorker_2.js');
     channel.onmessage = ({data}) => {
       console.log(`heard ${data} on page`);
     }
