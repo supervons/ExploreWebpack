@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body></body>
+  <script>
+    const channel = new BroadcastChannel('worker_channel');
+    const worker = new Worker('./emptyWorker2.js');
+    channel.onmessage = ({data}) => {
+      console.log(`heard ${data} on page`);
+    }
+    setTimeout(() => channel.postMessage('foo'), 1000);
+  </script>
+</html>
