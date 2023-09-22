@@ -14,3 +14,4 @@
 - [ ] 加载 angularJS
 - [ ] 跨多个版本集成
 - [ ] 综合启停优化
+- [ ] 探索 WebAssembly
